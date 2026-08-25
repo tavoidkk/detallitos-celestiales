@@ -1,4 +1,5 @@
 ---
+import CartButton from "../react/CartButton.tsx";
 import SearchBar from "../react/SearchBar.tsx";
 ---
 
@@ -25,7 +26,7 @@ import SearchBar from "../react/SearchBar.tsx";
     </a>
 
     <nav
-      class="hidden lg:flex items-center gap-7 text-sm h-full self-center"
+      class="hidden lg:flex items-center gap-7 text-sm self-center"
       aria-label="Navegación principal"
     >
       <a href="/" class="nav-link">Inicio</a>
@@ -35,9 +36,11 @@ import SearchBar from "../react/SearchBar.tsx";
     </nav>
 
     <div class="ml-auto flex items-center gap-2 sm:gap-3 self-center">
-      <div class="hidden sm:block">
+      <div class="hidden md:block w-40 lg:w-56">
         <SearchBar client:load />
       </div>
+
+      <CartButton client:load />
 
       <button
         type="button"
@@ -58,7 +61,6 @@ import SearchBar from "../react/SearchBar.tsx";
           stroke-linecap="round"
           stroke-linejoin="round"
           aria-hidden="true"
-          data-menu-icon="open"
         >
           <line x1="4" y1="6" x2="20" y2="6"></line>
           <line x1="4" y1="12" x2="20" y2="12"></line>
@@ -83,7 +85,7 @@ import SearchBar from "../react/SearchBar.tsx";
       <a href="/#envios" class="mobile-nav-link" data-nav-close>Envíos</a>
       <a href="/#encargos" class="mobile-nav-link" data-nav-close>Encargos</a>
     </nav>
-    <div class="sm:hidden mx-auto max-w-6xl px-4 pb-4">
+    <div class="md:hidden mx-auto max-w-6xl px-4 pb-4">
       <SearchBar client:load />
     </div>
   </div>
