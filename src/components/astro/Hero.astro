@@ -1,12 +1,23 @@
 ---
 import { ArrowRight, MessageCircle, Sparkles } from "lucide-astro";
 import { buildCustomOrderMessage, buildWhatsAppUrl } from "../../lib/format";
+
+const heroBg =
+  "https://images.unsplash.com/photo-1507692049790-de58290a4334?w=1800&q=80&auto=format&fit=crop";
+const whatsappUrl = buildWhatsAppUrl(buildCustomOrderMessage("Emaús, Samuel o Semillitas"));
 ---
 
 <section class="relative overflow-hidden">
   <div
     aria-hidden="true"
-    class="absolute inset-0 -z-10 bg-gradient-to-b from-celestial-sky-300/30 via-celestial-bg to-celestial-bg"
+    class="absolute inset-0 -z-10 bg-gradient-to-b from-celestial-sky-300/40 via-celestial-bg/85 to-celestial-bg"
+  >
+  </div>
+
+  <div
+    aria-hidden="true"
+    class="absolute inset-0 -z-10 opacity-25 bg-cover bg-center"
+    style={`background-image: url('${heroBg}');`}
   >
   </div>
 
@@ -46,7 +57,7 @@ import { buildCustomOrderMessage, buildWhatsAppUrl } from "../../lib/format";
           <ArrowRight size={18} aria-hidden="true" />
         </a>
         <a
-          href={buildWhatsAppUrl(buildCustomOrderMessage("Emaús"))}
+          href={whatsappUrl}
           target="_blank"
           rel="noopener noreferrer"
           class="inline-flex items-center justify-center gap-2 rounded-full border border-celestial-gold-500 px-6 py-3 text-base font-medium text-celestial-gold-700 hover:bg-celestial-gold-300/40 transition-colors duration-150 tap-safe"

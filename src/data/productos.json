@@ -2,13 +2,13 @@
   {
     "id": "pul-emaus",
     "slug": "pulsera-emaus",
-    "nombre": "Pulsara Emaús",
+    "nombre": "Pulsera Emaús",
     "categoria": "pulseras",
     "precio": 4.5,
     "precioBs": 195,
     "descripcion": "Pulsera tejida con hilos celestes y un dije de pez, símbolo del encuentro en el camino de Emaús. Ideal para entregar al cierre del retiro.",
-    "imagen": "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=900&q=80&auto=format&fit=crop",
-    "imagenAlt": "Pulsara tejida en tonos celestes con dije de pez sobre tela crema",
+    "imagen": "https://images.unsplash.com/photo-1543132220-3ec99c6094dc?w=900&q=80&auto=format&fit=crop",
+    "imagenAlt": "Pulsera tejida en tonos celestes con dije de pez sobre tela crema",
     "destacado": true,
     "stock": 80
   },
@@ -20,7 +20,7 @@
     "precio": 3.5,
     "precioBs": 152,
     "descripcion": "Pulsera colorida con cuentas pequeñas que representan la semilla de la fe. Pensada para los más pequeños del retiro Semillitas.",
-    "imagen": "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=900&q=80&auto=format&fit=crop",
+    "imagen": "https://images.unsplash.com/photo-1492551557933-34265f7af79e?w=900&q=80&auto=format&fit=crop",
     "imagenAlt": "Pulsera infantil con cuentas multicolor sobre fondo neutro",
     "destacado": true,
     "stock": 120
@@ -33,7 +33,7 @@
     "precio": 5,
     "precioBs": 217,
     "descripcion": "Pulsera de cuero suave con dije de corazón y estrella. Acompaña a los jóvenes del retiro Samuel en su llamado.",
-    "imagen": "https://images.unsplash.com/photo-1535632787350-4e68ef0c584f?w=900&q=80&auto=format&fit=crop",
+    "imagen": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=900&q=80&auto=format&fit=crop",
     "imagenAlt": "Pulsera de cuero marrón con dije metálico de estrella",
     "destacado": false,
     "stock": 60
@@ -46,7 +46,7 @@
     "precio": 9,
     "precioBs": 390,
     "descripcion": "Cadena fina en tono dorado con cruz pequeña. Pieza versátil para uso diario, perfecta como regalo de confirmación o primera comunión.",
-    "imagen": "https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=900&q=80&auto=format&fit=crop",
+    "imagen": "https://images.unsplash.com/photo-1543071220-6ee5bf71a54e?w=900&q=80&auto=format&fit=crop",
     "imagenAlt": "Collar con cadena dorada y cruz pequeña sobre superficie clara",
     "destacado": true,
     "stock": 45
@@ -58,8 +58,8 @@
     "categoria": "collares",
     "precio": 12,
     "precioBs": 520,
-    "descripcion": "Medalla de San Bento en metal plateado con cordón trenzado. Símbolo de protección y devoción muy querido en los retiros.",
-    "imagen": "https://images.unsplash.com/photo-1599643477877-530eb83abc8e?w=900&q=80&auto=format&fit=crop",
+    "descripcion": "Medalla de San Benito en metal plateado con cordón trenzado. Símbolo de protección y devoción muy querido en los retiros.",
+    "imagen": "https://images.unsplash.com/photo-1564182842519-8a3b2af3e228?w=900&q=80&auto=format&fit=crop",
     "imagenAlt": "Medalla religiosa de San Benito en plata sobre tela oscura",
     "destacado": false,
     "stock": 30
@@ -72,7 +72,7 @@
     "precio": 8,
     "precioBs": 347,
     "descripcion": "Dije en forma de gota con acabado nacarado, inspirado en la luz celestial. Cadena ajustable, ideal para personalizar.",
-    "imagen": "https://images.unsplash.com/photo-1515562141589-67f0d569b6f3?w=900&q=80&auto=format&fit=crop",
+    "imagen": "https://images.unsplash.com/photo-1605000797499-95a51c5269ae?w=900&q=80&auto=format&fit=crop",
     "imagenAlt": "Collar con dije de gota nacarada sobre fondo claro",
     "destacado": false,
     "stock": 50
@@ -85,7 +85,7 @@
     "precio": 6,
     "precioBs": 260,
     "descripcion": "Figura de Jesucristo en plástico resistente, tamaño de 10 cm. Perfecta para colocar en altares, mesas y espacios de oración.",
-    "imagen": "https://images.unsplash.com/photo-1604431696980-07e518647c1b?w=900&q=80&auto=format&fit=crop",
+    "imagen": "https://images.unsplash.com/photo-1620207418302-439b387441b0?w=900&q=80&auto=format&fit=crop",
     "imagenAlt": "Figura religiosa de Jesucristo sobre fondo claro",
     "destacado": true,
     "stock": 100
@@ -98,7 +98,7 @@
     "precio": 3,
     "precioBs": 130,
     "descripcion": "Figura compacta de Jesucristo en plástico, tamaño de 5 cm. Ideal para llevar en el bolsillo, en la mochila o como souvenir del retiro.",
-    "imagen": "https://images.unsplash.com/photo-1532800783378-1bed60adaf58?w=900&q=80&auto=format&fit=crop",
+    "imagen": "https://images.unsplash.com/photo-1546554137-f86b9593a222?w=900&q=80&auto=format&fit=crop",
     "imagenAlt": "Figura pequeña de Jesucristo sobre superficie de madera",
     "destacado": false,
     "stock": 150
@@ -111,7 +111,7 @@
     "precio": 7,
     "precioBs": 304,
     "descripcion": "Cruz de madera natural con vetas visibles y acabado suave. Cada pieza es única, hecha a mano con dedicación.",
-    "imagen": "https://images.unsplash.com/photo-1597918216049-f5f5a9d2cd2a?w=900&q=80&auto=format&fit=crop",
+    "imagen": "https://images.unsplash.com/photo-1490730141103-6cac27aaab94?w=900&q=80&auto=format&fit=crop",
     "imagenAlt": "Cruz de madera natural apoyada sobre tela clara",
     "destacado": false,
     "stock": 35
@@ -124,7 +124,7 @@
     "precio": 11,
     "precioBs": 477,
     "descripcion": "Cruz metálica con grabado de «Todo lo puedo en Cristo que me fortalece». Acabado pulido y cinta ajustable.",
-    "imagen": "https://images.unsplash.com/photo-1567609383280-9f3da5cf0a35?w=900&q=80&auto=format&fit=crop",
+    "imagen": "https://images.unsplash.com/photo-1606293459339-aa5d34a7b0e1?w=900&q=80&auto=format&fit=crop",
     "imagenAlt": "Cruz metálica con grabado sobre fondo oscuro",
     "destacado": false,
     "stock": 25
@@ -137,7 +137,7 @@
     "precio": 4,
     "precioBs": 174,
     "descripcion": "Set de tres velas aromáticas con fragancias suaves (vainilla, lavanda y jazmín). Crea el ambiente perfecto para la oración grupal.",
-    "imagen": "https://images.unsplash.com/photo-1602874801006-19a01b1e2e7f?w=900&q=80&auto=format&fit=crop",
+    "imagen": "https://images.unsplash.com/photo-1605627079912-97c3810a11a4?w=900&q=80&auto=format&fit=crop",
     "imagenAlt": "Velas aromáticas blancas sobre mesa de madera",
     "destacado": false,
     "stock": 70
@@ -150,7 +150,7 @@
     "precio": 2.5,
     "precioBs": 108,
     "descripcion": "Set de 12 stickers religiosos: cruces, palomas, versículos y frases inspiradoras. Resistentes al agua, perfectos para cuadernos y termos.",
-    "imagen": "https://images.unsplash.com/photo-1583912086096-8c60d75a53f9?w=900&q=80&auto=format&fit=crop",
+    "imagen": "https://images.unsplash.com/photo-1620625515032-6ed0c1790c75?w=900&q=80&auto=format&fit=crop",
     "imagenAlt": "Stickers religiosos sobre fondo claro",
     "destacado": false,
     "stock": 200

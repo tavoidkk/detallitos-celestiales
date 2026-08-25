@@ -54,19 +54,32 @@ const { product, priority = false } = Astro.props;
 </article>
 
 <script>
-  function bindProductCards() {
-    document.querySelectorAll<HTMLButtonElement>("[data-open-product]").forEach((btn) => {
-      if (btn.dataset.bound) return;
-      btn.dataset.bound = "1";
-      btn.addEventListener("click", () => {
-        const id = btn.dataset.openProduct;
-        if (!id) return;
-        window.dispatchEvent(
-          new CustomEvent("dc:open-product", { detail: { id } }),
-        );
-      });
-    });
+  function dispatchOpen(id: string) {
+    window.dispatchEvent(
+      new CustomEvent("dc:open-product", { detail: { id } }),
+    );
   }
+
+  function bindProductCards() {
+    document
+      .querySelectorAll<HTMLButtonElement>("[data-open-product]:not([data-bound])")
+      .forEach((btn) => {
+        btn.dataset.bound = "1";
+        btn.addEventListener("click", (e) => {
+          e.preventDefault();
+          const id = btn.dataset.openProduct;
+          if (!id) return;
+          dispatchOpen(id);
+        });
+      });
+  }
+
+  // Initial bind on first load
   bindProductCards();
+
+  // Re-bind after each View Transitions swap
   document.addEventListener("astro:after-swap", bindProductCards);
+
+  // Also rebind after page show (Safari back/forward cache)
+  window.addEventListener("pageshow", bindProductCards);
 </script>

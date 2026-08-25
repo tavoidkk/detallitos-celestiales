@@ -4,44 +4,67 @@ import { buildCustomOrderMessage, buildWhatsAppUrl } from "../../lib/format";
 
 const retreats = ["Emaús", "Samuel", "Semillitas"] as const;
 const message = buildCustomOrderMessage("Emaús, Samuel o Semillitas");
+
+const encargosImg =
+  "https://images.unsplash.com/photo-1551184451-76b762941ad6?w=1200&q=80&auto=format&fit=crop";
 ---
 
 <section id="encargos" class="mx-auto max-w-6xl px-4 md:px-6 py-16 md:py-24">
   <div
-    class="relative overflow-hidden rounded-3xl border border-celestial-gold-500/40 bg-gradient-to-br from-celestial-bg via-celestial-bg to-celestial-gold-300/20 p-8 md:p-12 reveal"
+    class="relative overflow-hidden rounded-3xl border border-celestial-gold-500/40 bg-gradient-to-br from-celestial-bg via-celestial-bg to-celestial-gold-300/20 reveal"
   >
+    <div
+      aria-hidden="true"
+      class="absolute inset-y-0 right-0 w-1/2 hidden md:block"
+    >
+      <img
+        src={encargosImg}
+        alt=""
+        width="1200"
+        height="800"
+        loading="lazy"
+        class="h-full w-full object-cover opacity-50"
+      />
+      <div
+        class="absolute inset-0 bg-gradient-to-r from-celestial-bg via-celestial-bg/70 to-transparent"
+      >
+      </div>
+    </div>
+
     <div
       aria-hidden="true"
       class="absolute -left-16 -bottom-16 h-56 w-56 rounded-full bg-celestial-sky-300/30 blur-3xl"
     >
     </div>
 
-    <div class="relative max-w-2xl">
-      <p class="text-xs uppercase tracking-[0.18em] text-celestial-gold-700">
-        Hecho a tu medida
-      </p>
-      <h2 class="mt-3 accent-rule text-celestial-ink">
-        Encargos personalizados para tu retiro
-      </h2>
-      <p class="mt-6 text-celestial-muted text-pretty">
-        Personalizamos pulseras, empaques y kits con los
-        colores, versículos y detalles de tu equipo. Cuéntanos
-        tu idea por WhatsApp y armamos una propuesta pensada
-        para{" "}
-        <strong class="font-medium text-celestial-ink"
-          >{retreats.join(", ")}</strong
-        >.
-      </p>
+    <div class="relative grid gap-8 p-8 md:p-12 md:grid-cols-2">
+      <div class="md:max-w-md">
+        <p class="text-xs uppercase tracking-[0.18em] text-celestial-gold-700">
+          Hecho a tu medida
+        </p>
+        <h2 class="mt-3 accent-rule text-celestial-ink">
+          Encargos personalizados para tu retiro
+        </h2>
+        <p class="mt-6 text-celestial-muted text-pretty">
+          Personalizamos pulseras, empaques y kits con los
+          colores, versículos y detalles de tu equipo. Cuéntanos
+          tu idea por WhatsApp y armamos una propuesta pensada
+          para{" "}
+          <strong class="font-medium text-celestial-ink"
+            >{retreats.join(", ")}</strong
+          >.
+        </p>
 
-      <a
-        href={buildWhatsAppUrl(message)}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-celestial-gold-600 px-6 py-3 text-base font-medium text-white shadow-celestial-sm hover:bg-celestial-gold-700 transition-colors duration-150 tap-safe"
-      >
-        <MessageCircle size={18} aria-hidden="true" />
-        Hablar por WhatsApp
-      </a>
+        <a
+          href={buildWhatsAppUrl(message)}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-celestial-gold-600 px-6 py-3 text-base font-medium text-white shadow-celestial-sm hover:bg-celestial-gold-700 transition-colors duration-150 tap-safe"
+        >
+          <MessageCircle size={18} aria-hidden="true" />
+          Hablar por WhatsApp
+        </a>
+      </div>
     </div>
   </div>
 </section>

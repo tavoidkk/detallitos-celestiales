@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useStore } from "@nanostores/react";
 import {
   Minus,
@@ -16,7 +16,12 @@ import {
   removeFromCart,
   setCartQty,
 } from "../../lib/store";
-import { buildOrderMessage, buildWhatsAppUrl, formatPrice } from "../../lib/format";
+import {
+  buildOrderMessage,
+  buildWhatsAppUrl,
+  formatPrice,
+  generateOrderNumber,
+} from "../../lib/format";
 
 export default function CartDrawer() {
   const open = useStore(cartOpen);
@@ -24,6 +29,12 @@ export default function CartDrawer() {
   const total = useStore(cartTotal);
   const dialogRef = useRef<HTMLDivElement>(null);
   const closeBtnRef = useRef<HTMLButtonElement>(null);
+  const [orderNumber] = useState<string>(() => generateOrderNumber());
+
+  const checkoutUrl = useMemo(() => {
+    if (items.length === 0) return "#";
+    return buildWhatsAppUrl(buildOrderMessage(items, total, orderNumber));
+  }, [items, total, orderNumber]);
 
   useEffect(() => {
     if (!open) return;
@@ -177,14 +188,18 @@ export default function CartDrawer() {
 
         {items.length > 0 && (
           <footer className="border-t border-celestial-border bg-celestial-bg/50 px-5 py-4">
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between text-xs text-celestial-muted">
+              <span>Pedido</span>
+              <span className="tabular-nums">#{orderNumber}</span>
+            </div>
+            <div className="mt-2 flex items-center justify-between">
               <p className="text-sm text-celestial-muted">Total</p>
               <p className="font-display text-2xl text-celestial-ink tabular-nums">
                 {formatPrice(total)}
               </p>
             </div>
             <a
-              href={buildWhatsAppUrl(buildOrderMessage(items, total))}
+              href={checkoutUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-full bg-celestial-sky-600 px-5 py-3 text-sm font-medium text-white shadow-celestial-sm hover:bg-celestial-sky-700 transition-colors duration-150 tap-safe"

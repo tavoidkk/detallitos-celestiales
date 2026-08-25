@@ -1,5 +1,4 @@
 ---
-import CartButton from "../react/CartButton.tsx";
 ---
 
 <header
@@ -11,16 +10,16 @@ import CartButton from "../react/CartButton.tsx";
   >
     <a
       href="/"
-      class="flex items-center gap-3 tap-safe rounded-lg focus-visible:outline-2 focus-visible:outline-celestial-sky-500"
-      aria-label={`Ir al inicio — ${"Detallitos Celestiales"}`}
+      class="flex items-center tap-safe rounded-lg focus-visible:outline-2 focus-visible:outline-celestial-sky-500"
+      aria-label="Ir al inicio — Detallitos Celestiales"
     >
       <img
-        src="/public/logo-header.png"
+        src="/logo-header.png"
         alt=""
-        width="160"
-        height="40"
+        width="240"
+        height="60"
         fetchpriority="high"
-        class="h-9 w-auto md:h-10"
+        class="h-14 w-auto md:h-16"
       />
       <span class="sr-only">Detallitos Celestiales</span>
     </a>
@@ -55,7 +54,5 @@ import CartButton from "../react/CartButton.tsx";
         >
       </li>
     </ul>
-
-    <CartButton client:load />
   </nav>
 </header>
