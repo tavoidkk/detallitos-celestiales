@@ -1,0 +1,108 @@
+---
+import { SITE } from "../../lib/config";
+import { Instagram, Facebook, Music2, MessageCircle } from "lucide-astro";
+---
+
+<footer
+  class="mt-24 border-t border-celestial-border bg-celestial-surface"
+>
+  <div
+    class="mx-auto max-w-6xl px-4 md:px-6 py-12 grid gap-10 md:grid-cols-3"
+  >
+    <div>
+      <img
+        src="/logo-header.png"
+        alt="Detallitos Celestiales"
+        width="160"
+        height="40"
+        loading="lazy"
+        class="h-9 w-auto"
+      />
+      <p class="mt-4 text-sm text-celestial-muted text-pretty">
+        {SITE.description}
+      </p>
+    </div>
+
+    <div>
+      <h2 class="font-display text-base text-celestial-ink">Contacto</h2>
+      <ul class="mt-4 space-y-2 text-sm">
+        <li>
+          <a
+            href={`https://wa.me/${SITE.whatsapp}`}
+            class="inline-flex items-center gap-2 text-celestial-muted hover:text-celestial-sky-700 transition-colors duration-150"
+          >
+            <MessageCircle size={16} aria-hidden="true" />
+            {SITE.phone}
+          </a>
+        </li>
+        <li>
+          <a
+            href={`mailto:${SITE.email}`}
+            class="inline-flex items-center gap-2 text-celestial-muted hover:text-celestial-sky-700 transition-colors duration-150"
+          >
+            <span aria-hidden="true">@</span>
+            {SITE.email}
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div>
+      <h2 class="font-display text-base text-celestial-ink">Síguenos</h2>
+      <ul class="mt-4 flex gap-3">
+        <li>
+          <a
+            href={SITE.social.instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram de Detallitos Celestiales"
+            class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-celestial-border text-celestial-muted hover:text-celestial-sky-700 hover:border-celestial-sky-500 transition-colors duration-150 tap-safe"
+          >
+            <Instagram size={18} aria-hidden="true" />
+          </a>
+        </li>
+        <li>
+          <a
+            href={SITE.social.facebook}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Facebook de Detallitos Celestiales"
+            class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-celestial-border text-celestial-muted hover:text-celestial-sky-700 hover:border-celestial-sky-500 transition-colors duration-150 tap-safe"
+          >
+            <Facebook size={18} aria-hidden="true" />
+          </a>
+        </li>
+        <li>
+          <a
+            href={SITE.social.tiktok}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="TikTok de Detallitos Celestiales"
+            class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-celestial-border text-celestial-muted hover:text-celestial-sky-700 hover:border-celestial-sky-500 transition-colors duration-150 tap-safe"
+          >
+            <Music2 size={18} aria-hidden="true" />
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="border-t border-celestial-border">
+    <p
+      class="mx-auto max-w-6xl px-4 md:px-6 py-6 text-xs text-celestial-muted text-center"
+    >
+      © <span data-current-year>{new Date().getFullYear()}</span>
+      {" "}{SITE.name}. Todos los derechos reservados.
+    </p>
+  </div>
+</footer>
+
+<script>
+  // Update year on view transitions
+  function syncYear() {
+    const el = document.querySelector("[data-current-year]");
+    if (el) el.textContent = String(new Date().getFullYear());
+  }
+  syncYear();
+  document.addEventListener("astro:after-swap", syncYear);
+</script>

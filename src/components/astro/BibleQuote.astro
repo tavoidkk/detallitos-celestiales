@@ -1,0 +1,37 @@
+---
+import { SITE } from "../../lib/config";
+import { ShoppingBag } from "lucide-astro";
+---
+
+<section class="mx-auto max-w-6xl px-4 md:px-6 py-16 md:py-24">
+  <div
+    class="relative overflow-hidden rounded-3xl bg-celestial-surface border border-celestial-border px-6 py-14 md:px-16 md:py-20 text-center reveal"
+  >
+    <div
+      aria-hidden="true"
+      class="absolute inset-0 -z-0 bg-[radial-gradient(ellipse_at_top,rgba(125,211,252,0.25),transparent_60%)]"
+    >
+    </div>
+
+    <blockquote class="relative z-10 mx-auto max-w-3xl">
+      <p
+        class="font-display text-2xl md:text-4xl leading-snug text-celestial-ink text-balance"
+      >
+        “{SITE.bibleVerse.text}”
+      </p>
+      <footer class="mt-4 text-sm uppercase tracking-[0.18em] text-celestial-sky-700">
+        — {SITE.bibleVerse.ref}
+      </footer>
+    </blockquote>
+
+    <div class="relative z-10 mt-10">
+      <a
+        href="/catalogo"
+        class="inline-flex items-center justify-center gap-2 rounded-full bg-celestial-sky-600 px-6 py-3 text-base font-medium text-white shadow-celestial-sm hover:bg-celestial-sky-700 transition-colors duration-150 tap-safe"
+      >
+        <ShoppingBag size={18} aria-hidden="true" />
+        Haz tu pedido hoy
+      </a>
+    </div>
+  </div>
+</section>

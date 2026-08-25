@@ -1,0 +1,61 @@
+---
+import CartButton from "../react/CartButton.tsx";
+---
+
+<header
+  class="sticky top-0 z-40 backdrop-blur-md bg-celestial-bg/85 border-b border-celestial-border"
+>
+  <nav
+    class="mx-auto max-w-6xl flex items-center justify-between gap-4 px-4 py-3 md:px-6 md:py-4"
+    aria-label="Navegación principal"
+  >
+    <a
+      href="/"
+      class="flex items-center gap-3 tap-safe rounded-lg focus-visible:outline-2 focus-visible:outline-celestial-sky-500"
+      aria-label={`Ir al inicio — ${"Detallitos Celestiales"}`}
+    >
+      <img
+        src="/public/logo-header.png"
+        alt=""
+        width="160"
+        height="40"
+        fetchpriority="high"
+        class="h-9 w-auto md:h-10"
+      />
+      <span class="sr-only">Detallitos Celestiales</span>
+    </a>
+
+    <ul class="hidden md:flex items-center gap-6 text-sm">
+      <li>
+        <a
+          href="/"
+          class="text-celestial-muted hover:text-celestial-ink transition-colors duration-150"
+          >Inicio</a
+        >
+      </li>
+      <li>
+        <a
+          href="/catalogo"
+          class="text-celestial-muted hover:text-celestial-ink transition-colors duration-150"
+          >Catálogo</a
+        >
+      </li>
+      <li>
+        <a
+          href="/#envios"
+          class="text-celestial-muted hover:text-celestial-ink transition-colors duration-150"
+          >Envíos</a
+        >
+      </li>
+      <li>
+        <a
+          href="/#encargos"
+          class="text-celestial-muted hover:text-celestial-ink transition-colors duration-150"
+          >Encargos</a
+        >
+      </li>
+    </ul>
+
+    <CartButton client:load />
+  </nav>
+</header>

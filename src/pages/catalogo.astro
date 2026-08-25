@@ -1,0 +1,148 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/astro/Header.astro";
+import Footer from "../components/astro/Footer.astro";
+import ProductCard from "../components/astro/ProductCard.astro";
+import StoreFront from "../components/react/StoreFront";
+import { getAllProducts } from "../lib/products";
+import { CATEGORIAS } from "../lib/config";
+
+const productos = getAllProducts();
+---
+
+<Layout
+  title="Catálogo — Detallitos Celestiales"
+  description="Pulseras, collares, cruces, jesucitos y accesorios religiosos para retiros espirituales católicos."
+>
+  <Header />
+  <main id="main">
+    <section class="mx-auto max-w-6xl px-4 md:px-6 pt-12 md:pt-16">
+      <p class="text-xs uppercase tracking-[0.18em] text-celestial-sky-700">
+        Catálogo completo
+      </p>
+      <h1 class="mt-3 font-display text-celestial-ink text-balance">
+        Cada detalle, pensado para tu retiro
+      </h1>
+      <p class="mt-4 max-w-2xl text-celestial-muted text-pretty">
+        Explora todos los productos disponibles. Toca cualquier
+        tarjeta para ver el detalle, elegir la cantidad y
+        agregar al carrito.
+      </p>
+    </section>
+
+    <section
+      class="mx-auto max-w-6xl px-4 md:px-6 pt-8"
+      aria-label="Filtros por categoría"
+    >
+      <div
+        class="flex flex-wrap items-center gap-2"
+        role="group"
+        aria-label="Categorías de productos"
+      >
+        <button
+          type="button"
+          data-filter="all"
+          aria-pressed="true"
+          class="filter-chip is-active inline-flex items-center rounded-full border border-celestial-border bg-celestial-ink px-4 py-2 text-sm font-medium text-white tap-safe"
+        >
+          Todos
+          <span
+            class="ml-2 inline-flex items-center justify-center rounded-full bg-white/20 px-2 text-xs tabular-nums"
+            >{productos.length}</span
+          >
+        </button>
+        {CATEGORIAS.map((cat) => {
+          const count = productos.filter(
+            (p) => p.categoria === cat.id,
+          ).length;
+          if (count === 0) return null;
+          return (
+            <button
+              type="button"
+              data-filter={cat.id}
+              aria-pressed="false"
+              class="filter-chip inline-flex items-center rounded-full border border-celestial-border bg-celestial-surface px-4 py-2 text-sm font-medium text-celestial-ink hover:border-celestial-sky-500 transition-colors duration-150 tap-safe"
+            >
+              {cat.label}
+              <span
+                class="ml-2 inline-flex items-center justify-center rounded-full bg-celestial-bg px-2 text-xs text-celestial-muted tabular-nums"
+              >
+                {count}
+              </span>
+            </button>
+          );
+        })}
+      </div>
+    </section>
+
+    <section
+      class="mx-auto max-w-6xl px-4 md:px-6 py-10 md:py-14"
+      aria-live="polite"
+    >
+      <div
+        id="catalog-grid"
+        class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+      >
+        {productos.map((product) => (
+          <div data-category={product.categoria}>
+            <ProductCard product={product} priority={false} />
+          </div>
+        ))}
+      </div>
+
+      <div
+        id="catalog-empty"
+        class="hidden text-center py-16"
+      >
+        <p class="font-display text-xl text-celestial-ink">
+          Sin resultados en esta categoría
+        </p>
+        <p class="mt-2 text-sm text-celestial-muted">
+          Prueba con otro filtro para ver más detalles.
+        </p>
+      </div>
+    </section>
+  </main>
+  <Footer />
+  <StoreFront client:load />
+
+  <script>
+    function setupFilters() {
+      const chips = document.querySelectorAll<HTMLButtonElement>(".filter-chip");
+      const items = document.querySelectorAll<HTMLElement>("#catalog-grid > [data-category]");
+      const empty = document.getElementById("catalog-empty");
+      if (!chips.length || !items.length) return;
+
+      function apply(filter: string) {
+        let visible = 0;
+        items.forEach((el) => {
+          const matches = filter === "all" || el.dataset.category === filter;
+          el.classList.toggle("hidden", !matches);
+          if (matches) visible++;
+        });
+        if (empty) empty.classList.toggle("hidden", visible > 0);
+      }
+
+      chips.forEach((chip) => {
+        chip.addEventListener("click", () => {
+          const filter = chip.dataset.filter || "all";
+          chips.forEach((c) => {
+            const active = c === chip;
+            c.setAttribute("aria-pressed", String(active));
+            c.classList.toggle("is-active", active);
+            if (active) {
+              c.classList.remove("bg-celestial-surface", "text-celestial-ink");
+              c.classList.add("bg-celestial-ink", "text-white");
+            } else {
+              c.classList.remove("bg-celestial-ink", "text-white");
+              c.classList.add("bg-celestial-surface", "text-celestial-ink");
+            }
+          });
+          apply(filter);
+        });
+      });
+    }
+    setupFilters();
+    document.addEventListener("astro:after-swap", setupFilters);
+  </script>
+</Layout>

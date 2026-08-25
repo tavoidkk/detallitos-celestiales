@@ -1,0 +1,24 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/astro/Header.astro";
+import Footer from "../components/astro/Footer.astro";
+import Hero from "../components/astro/Hero.astro";
+import FeaturedProducts from "../components/astro/FeaturedProducts.astro";
+import ShippingBanner from "../components/astro/ShippingBanner.astro";
+import CustomOrdersCTA from "../components/astro/CustomOrdersCTA.astro";
+import BibleQuote from "../components/astro/BibleQuote.astro";
+import StoreFront from "../components/react/StoreFront";
+---
+
+<Layout>
+  <Header />
+  <main id="main">
+    <Hero />
+    <FeaturedProducts />
+    <ShippingBanner />
+    <CustomOrdersCTA />
+    <BibleQuote />
+  </main>
+  <Footer />
+  <StoreFront client:load />
+</Layout>
