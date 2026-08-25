@@ -1,6 +1,6 @@
 ---
 import { SITE } from "../../lib/config";
-import { Instagram, Facebook, Music2, MessageCircle } from "lucide-astro";
+import { Instagram, Facebook, Send, Mail } from "lucide-astro";
 ---
 
 <footer
@@ -31,7 +31,7 @@ import { Instagram, Facebook, Music2, MessageCircle } from "lucide-astro";
             href={`https://wa.me/${SITE.whatsapp}`}
             class="inline-flex items-center gap-2 text-celestial-muted hover:text-celestial-sky-700 transition-colors duration-150"
           >
-            <MessageCircle size={16} aria-hidden="true" />
+            <Send size={16} aria-hidden="true" />
             {SITE.phone}
           </a>
         </li>
@@ -40,7 +40,7 @@ import { Instagram, Facebook, Music2, MessageCircle } from "lucide-astro";
             href={`mailto:${SITE.email}`}
             class="inline-flex items-center gap-2 text-celestial-muted hover:text-celestial-sky-700 transition-colors duration-150"
           >
-            <span aria-hidden="true">@</span>
+            <Mail size={16} aria-hidden="true" />
             {SITE.email}
           </a>
         </li>
@@ -70,17 +70,6 @@ import { Instagram, Facebook, Music2, MessageCircle } from "lucide-astro";
             class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-celestial-border text-celestial-muted hover:text-celestial-sky-700 hover:border-celestial-sky-500 transition-colors duration-150 tap-safe"
           >
             <Facebook size={18} aria-hidden="true" />
-          </a>
-        </li>
-        <li>
-          <a
-            href={SITE.social.tiktok}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="TikTok de Detallitos Celestiales"
-            class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-celestial-border text-celestial-muted hover:text-celestial-sky-700 hover:border-celestial-sky-500 transition-colors duration-150 tap-safe"
-          >
-            <Music2 size={18} aria-hidden="true" />
           </a>
         </li>
       </ul>
