@@ -3,7 +3,7 @@ import { useStore } from "@nanostores/react";
 import {
   Minus,
   Plus,
-  ShoppingBag,
+  ShoppingCart,
   X,
   Check,
 } from "lucide-react";
@@ -20,16 +20,18 @@ export default function ProductModal() {
   const product = useStore(productModalProduct);
   const [qty, setQty] = useState(1);
   const [justAdded, setJustAdded] = useState(false);
+  const [closing, setClosing] = useState(false);
 
   useEffect(() => {
     setQty(1);
     setJustAdded(false);
+    setClosing(false);
   }, [product?.id]);
 
   useEffect(() => {
     if (!product) return;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") closeProductModal();
+      if (e.key === "Escape") handleClose();
     };
     document.addEventListener("keydown", onKey);
     document.body.style.overflow = "hidden";
@@ -38,6 +40,14 @@ export default function ProductModal() {
       document.body.style.overflow = "";
     };
   }, [product]);
+
+  const handleClose = () => {
+    setClosing(true);
+    setTimeout(() => {
+      setClosing(false);
+      closeProductModal();
+    }, 200);
+  };
 
   if (!product) return null;
 
@@ -54,18 +64,31 @@ export default function ProductModal() {
   };
 
   return (
-    <div className="fixed inset-0 z-50" role="dialog" aria-modal="true" aria-labelledby="product-title">
+    <div
+      className={`fixed inset-0 z-50 ${closing ? "opacity-0" : "opacity-100"} transition-opacity duration-200 ease-out`}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="product-title"
+    >
       <div
         className="absolute inset-0 bg-celestial-ink/50"
-        onClick={() => closeProductModal()}
+        onClick={handleClose}
         aria-hidden="true"
       />
 
-      <div className="absolute inset-x-4 top-1/2 -translate-y-1/2 mx-auto max-w-2xl md:inset-x-auto md:left-1/2 md:-translate-x-1/2 md:w-[calc(100%-2rem)]">
-        <div className="relative overflow-hidden rounded-3xl bg-celestial-surface shadow-celestial-lg max-h-[90vh] overflow-y-auto overscroll-contain">
+      <div
+        className={`absolute inset-x-4 top-1/2 mx-auto max-w-2xl md:inset-x-auto md:left-1/2 md:-translate-x-1/2 md:w-[calc(100%-2rem)]`}
+      >
+        <div
+          className={`relative overflow-hidden rounded-3xl bg-celestial-surface shadow-celestial-lg max-h-[90vh] overflow-y-auto overscroll-contain transform-gpu will-change-transform ${
+            closing
+              ? "opacity-0 scale-95 translate-y-2"
+              : "opacity-100 scale-100 translate-y-[-50%] md:translate-y-[-50%]"
+          } transition-all duration-200 ease-out`}
+        >
           <button
             type="button"
-            onClick={() => closeProductModal()}
+            onClick={handleClose}
             aria-label="Cerrar detalle"
             className="absolute right-3 top-3 z-10 inline-flex h-9 w-9 items-center justify-center rounded-full bg-celestial-surface/90 text-celestial-muted hover:text-celestial-ink hover:bg-celestial-bg tap-safe"
           >
@@ -98,11 +121,6 @@ export default function ProductModal() {
                 <p className="mt-3 font-display text-3xl text-celestial-sky-700 tabular-nums">
                   {formatPrice(product.precio)}
                 </p>
-                {product.precioBs !== undefined && (
-                  <p className="mt-1 text-xs text-celestial-muted tabular-nums">
-                    Referencial en bolívares: Bs. {product.precioBs.toFixed(2)}
-                  </p>
-                )}
               </div>
 
               <p className="text-sm text-celestial-muted text-pretty">
@@ -157,7 +175,7 @@ export default function ProductModal() {
                   </>
                 ) : (
                   <>
-                    <ShoppingBag size={18} aria-hidden="true" />
+                    <ShoppingCart size={18} aria-hidden="true" />
                     Agregar al carrito
                   </>
                 )}

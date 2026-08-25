@@ -8,5 +8,12 @@ export default defineConfig({
   integrations: [react()],
   vite: {
     plugins: [tailwindcss()],
+    optimizeDeps: {
+      include: ['react', 'react-dom', 'react-dom/client', 'react/jsx-runtime'],
+      exclude: ['lucide-react'],
+    },
+    ssr: {
+      noExternal: ['lucide-react'],
+    },
   },
 });

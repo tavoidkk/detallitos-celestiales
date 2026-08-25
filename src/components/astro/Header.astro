@@ -1,58 +1,73 @@
 ---
+import SearchBar from "../react/SearchBar.tsx";
 ---
 
 <header
   class="sticky top-0 z-40 backdrop-blur-md bg-celestial-bg/85 border-b border-celestial-border"
 >
-  <nav
-    class="mx-auto max-w-6xl flex items-center justify-between gap-4 px-4 py-3 md:px-6 md:py-4"
-    aria-label="Navegación principal"
+  <div
+    class="mx-auto max-w-6xl flex items-center gap-4 px-4 py-3 md:px-6 md:py-4"
   >
     <a
       href="/"
-      class="flex items-center tap-safe rounded-lg focus-visible:outline-2 focus-visible:outline-celestial-sky-500"
+      class="flex items-center shrink-0 tap-safe rounded-lg focus-visible:outline-2 focus-visible:outline-celestial-sky-500"
       aria-label="Ir al inicio — Detallitos Celestiales"
     >
       <img
         src="/logo-header.png"
         alt=""
-        width="240"
-        height="60"
+        width="280"
+        height="70"
         fetchpriority="high"
-        class="h-14 w-auto md:h-16"
+        class="h-16 w-auto md:h-20"
       />
       <span class="sr-only">Detallitos Celestiales</span>
     </a>
 
-    <ul class="hidden md:flex items-center gap-6 text-sm">
-      <li>
-        <a
-          href="/"
-          class="text-celestial-muted hover:text-celestial-ink transition-colors duration-150"
-          >Inicio</a
-        >
-      </li>
-      <li>
-        <a
-          href="/catalogo"
-          class="text-celestial-muted hover:text-celestial-ink transition-colors duration-150"
-          >Catálogo</a
-        >
-      </li>
-      <li>
-        <a
-          href="/#envios"
-          class="text-celestial-muted hover:text-celestial-ink transition-colors duration-150"
-          >Envíos</a
-        >
-      </li>
-      <li>
-        <a
-          href="/#encargos"
-          class="text-celestial-muted hover:text-celestial-ink transition-colors duration-150"
-          >Encargos</a
-        >
-      </li>
-    </ul>
-  </nav>
+    <nav
+      class="hidden md:flex items-center gap-7 text-sm h-full self-center"
+      aria-label="Navegación principal"
+    >
+      <a href="/" class="nav-link">Inicio</a>
+      <a href="/catalogo" class="nav-link">Catálogo</a>
+      <a href="/#envios" class="nav-link">Envíos</a>
+      <a href="/#encargos" class="nav-link">Encargos</a>
+    </nav>
+
+    <div class="ml-auto flex items-center gap-3 self-center">
+      <SearchBar client:load />
+    </div>
+  </div>
 </header>
+
+<style>
+  .nav-link {
+    position: relative;
+    color: var(--color-celestial-muted);
+    padding-block: 0.5rem;
+    transition: color 150ms ease-out;
+  }
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0.25rem;
+    height: 2px;
+    background: var(--color-celestial-sky-500);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 250ms ease-out;
+  }
+  .nav-link:hover {
+    color: var(--color-celestial-ink);
+  }
+  .nav-link:hover::after {
+    transform: scaleX(1);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .nav-link::after {
+      transition: none;
+    }
+  }
+</style>

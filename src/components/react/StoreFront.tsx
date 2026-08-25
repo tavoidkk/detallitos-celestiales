@@ -1,10 +1,16 @@
 import { useEffect } from "react";
 import { useStore } from "@nanostores/react";
-import { ShoppingBag } from "lucide-react";
+import { ShoppingCart } from "lucide-react";
 import ProductModal from "./ProductModal";
 import CartDrawer from "./CartDrawer";
 import { getProductById } from "../../lib/products";
-import { cartCount, openCart, openProductModal, productModalProduct } from "../../lib/store";
+import {
+  addToCart,
+  cartCount,
+  openCart,
+  openProductModal,
+  productModalProduct,
+} from "../../lib/store";
 
 function CartFloatingButton() {
   const count = useStore(cartCount);
@@ -17,7 +23,7 @@ function CartFloatingButton() {
       aria-label={`Abrir carrito, ${count} ${count === 1 ? "artículo" : "artículos"}`}
       className="fixed top-3 right-4 md:top-4 md:right-6 z-50 inline-flex h-11 w-11 items-center justify-center rounded-full border border-celestial-border bg-celestial-surface/95 text-celestial-ink shadow-celestial-sm backdrop-blur hover:border-celestial-sky-500 hover:text-celestial-sky-700 transition-colors duration-150 tap-safe"
     >
-      <ShoppingBag size={20} aria-hidden="true" />
+      <ShoppingCart size={20} aria-hidden="true" />
       {count > 0 && (
         <span
           aria-hidden="true"
@@ -32,13 +38,23 @@ function CartFloatingButton() {
 
 export default function StoreFront() {
   useEffect(() => {
-    const handler = (e: Event) => {
+    const onOpen = (e: Event) => {
       const detail = (e as CustomEvent<{ id: string }>).detail;
       if (!detail?.id) return;
       const product = getProductById(detail.id);
       if (product) openProductModal(product);
     };
-    window.addEventListener("dc:open-product", handler);
+    const onQuickAdd = (e: Event) => {
+      const detail = (e as CustomEvent<{ id: string }>).detail;
+      if (!detail?.id) return;
+      const product = getProductById(detail.id);
+      if (product) {
+        addToCart(product, 1);
+        openCart();
+      }
+    };
+    window.addEventListener("dc:open-product", onOpen);
+    window.addEventListener("dc:quick-add", onQuickAdd);
 
     const rebind = () => {
       document
@@ -60,7 +76,8 @@ export default function StoreFront() {
     document.addEventListener("astro:after-swap", rebind);
 
     return () => {
-      window.removeEventListener("dc:open-product", handler);
+      window.removeEventListener("dc:open-product", onOpen);
+      window.removeEventListener("dc:quick-add", onQuickAdd);
       document.removeEventListener("astro:after-swap", rebind);
     };
   }, []);

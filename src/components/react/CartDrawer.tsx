@@ -6,7 +6,7 @@ import {
   Trash2,
   X,
   MessageCircle,
-  ShoppingBag,
+  ShoppingCart,
 } from "lucide-react";
 import {
   cartList,
@@ -98,7 +98,7 @@ export default function CartDrawer() {
           {items.length === 0 ? (
             <div className="flex h-full flex-col items-center justify-center gap-4 py-16 text-center">
               <span className="inline-flex h-14 w-14 items-center justify-center rounded-full bg-celestial-sky-300/30 text-celestial-sky-700">
-                <ShoppingBag size={24} aria-hidden="true" />
+                <ShoppingCart size={24} aria-hidden="true" />
               </span>
               <div>
                 <p className="font-display text-lg text-celestial-ink">

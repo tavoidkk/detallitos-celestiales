@@ -11,6 +11,8 @@ const { product, priority = false } = Astro.props;
 ---
 
 <article
+  data-product-card
+  data-product-id={product.id}
   class="group relative flex flex-col rounded-2xl border border-celestial-border bg-celestial-surface overflow-hidden shadow-celestial-sm hover:shadow-celestial-md transition-shadow duration-200"
 >
   <button
@@ -43,20 +45,40 @@ const { product, priority = false } = Astro.props;
         <p class="font-display text-xl text-celestial-sky-700 tabular-nums">
           {formatPrice(product.precio)}
         </p>
-        <span
-          class="text-xs text-celestial-sky-700 font-medium underline-offset-4 group-hover:underline"
-        >
-          Ver detalle
-        </span>
       </div>
     </div>
   </button>
+
+  <div class="grid grid-cols-2 border-t border-celestial-border">
+    <button
+      type="button"
+      data-open-product={product.id}
+      class="flex items-center justify-center gap-1.5 px-3 py-2.5 text-xs font-medium text-celestial-ink hover:bg-celestial-bg transition-colors duration-150 tap-safe border-r border-celestial-border focus-visible:outline-2 focus-visible:outline-celestial-sky-500"
+      aria-label={`Ver detalle de ${product.nombre}`}
+    >
+      Ver detalle
+    </button>
+    <button
+      type="button"
+      data-quick-add={product.id}
+      class="flex items-center justify-center gap-1.5 px-3 py-2.5 text-xs font-medium text-celestial-sky-700 hover:bg-celestial-sky-300/30 transition-colors duration-150 tap-safe focus-visible:outline-2 focus-visible:outline-celestial-sky-500"
+      aria-label={`Agregar ${product.nombre} al carrito`}
+    >
+      Agregar
+    </button>
+  </div>
 </article>
 
 <script>
   function dispatchOpen(id: string) {
     window.dispatchEvent(
       new CustomEvent("dc:open-product", { detail: { id } }),
+    );
+  }
+
+  function dispatchQuickAdd(id: string) {
+    window.dispatchEvent(
+      new CustomEvent("dc:quick-add", { detail: { id } }),
     );
   }
 
@@ -67,19 +89,28 @@ const { product, priority = false } = Astro.props;
         btn.dataset.bound = "1";
         btn.addEventListener("click", (e) => {
           e.preventDefault();
+          e.stopPropagation();
           const id = btn.dataset.openProduct;
           if (!id) return;
           dispatchOpen(id);
         });
       });
+
+    document
+      .querySelectorAll<HTMLButtonElement>("[data-quick-add]:not([data-bound])")
+      .forEach((btn) => {
+        btn.dataset.bound = "1";
+        btn.addEventListener("click", (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          const id = btn.dataset.quickAdd;
+          if (!id) return;
+          dispatchQuickAdd(id);
+        });
+      });
   }
 
-  // Initial bind on first load
   bindProductCards();
-
-  // Re-bind after each View Transitions swap
   document.addEventListener("astro:after-swap", bindProductCards);
-
-  // Also rebind after page show (Safari back/forward cache)
   window.addEventListener("pageshow", bindProductCards);
 </script>
