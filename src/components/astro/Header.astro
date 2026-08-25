@@ -6,7 +6,7 @@ import SearchBar from "../react/SearchBar.tsx";
   class="sticky top-0 z-40 backdrop-blur-md bg-celestial-bg/85 border-b border-celestial-border"
 >
   <div
-    class="mx-auto max-w-6xl flex items-center gap-4 px-4 py-3 md:px-6 md:py-4"
+    class="mx-auto max-w-6xl flex items-center gap-3 sm:gap-4 px-4 py-3 md:px-6 md:py-4"
   >
     <a
       href="/"
@@ -19,13 +19,13 @@ import SearchBar from "../react/SearchBar.tsx";
         width="280"
         height="70"
         fetchpriority="high"
-        class="h-16 w-auto md:h-20"
+        class="h-12 w-auto sm:h-14 md:h-16 lg:h-20"
       />
       <span class="sr-only">Detallitos Celestiales</span>
     </a>
 
     <nav
-      class="hidden md:flex items-center gap-7 text-sm h-full self-center"
+      class="hidden lg:flex items-center gap-7 text-sm h-full self-center"
       aria-label="Navegación principal"
     >
       <a href="/" class="nav-link">Inicio</a>
@@ -34,7 +34,56 @@ import SearchBar from "../react/SearchBar.tsx";
       <a href="/#encargos" class="nav-link">Encargos</a>
     </nav>
 
-    <div class="ml-auto flex items-center gap-3 self-center">
+    <div class="ml-auto flex items-center gap-2 sm:gap-3 self-center">
+      <div class="hidden sm:block">
+        <SearchBar client:load />
+      </div>
+
+      <button
+        type="button"
+        data-menu-toggle
+        aria-label="Abrir menú"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        class="lg:hidden inline-flex h-10 w-10 items-center justify-center rounded-full border border-celestial-border bg-celestial-surface text-celestial-ink hover:border-celestial-sky-500 hover:text-celestial-sky-700 transition-colors duration-150 tap-safe"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+          data-menu-icon="open"
+        >
+          <line x1="4" y1="6" x2="20" y2="6"></line>
+          <line x1="4" y1="12" x2="20" y2="12"></line>
+          <line x1="4" y1="18" x2="20" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div
+    id="mobile-menu"
+    data-menu-panel
+    hidden
+    class="lg:hidden border-t border-celestial-border bg-celestial-bg/95 backdrop-blur"
+  >
+    <nav
+      class="mx-auto max-w-6xl px-4 py-3 flex flex-col gap-1"
+      aria-label="Navegación móvil"
+    >
+      <a href="/" class="mobile-nav-link" data-nav-close>Inicio</a>
+      <a href="/catalogo" class="mobile-nav-link" data-nav-close>Catálogo</a>
+      <a href="/#envios" class="mobile-nav-link" data-nav-close>Envíos</a>
+      <a href="/#encargos" class="mobile-nav-link" data-nav-close>Encargos</a>
+    </nav>
+    <div class="sm:hidden mx-auto max-w-6xl px-4 pb-4">
       <SearchBar client:load />
     </div>
   </div>
@@ -65,9 +114,57 @@ import SearchBar from "../react/SearchBar.tsx";
   .nav-link:hover::after {
     transform: scaleX(1);
   }
+  .mobile-nav-link {
+    display: block;
+    padding: 0.75rem 0.75rem;
+    color: var(--color-celestial-ink);
+    font-size: 0.95rem;
+    border-radius: 0.5rem;
+    transition: background-color 150ms ease-out;
+  }
+  .mobile-nav-link:hover,
+  .mobile-nav-link:focus-visible {
+    background-color: var(--color-celestial-bg);
+    color: var(--color-celestial-sky-700);
+  }
   @media (prefers-reduced-motion: reduce) {
-    .nav-link::after {
+    .nav-link::after,
+    .mobile-nav-link {
       transition: none;
     }
   }
 </style>
+
+<script>
+  function setupMenu() {
+    const toggle = document.querySelector<HTMLButtonElement>("[data-menu-toggle]");
+    const panel = document.querySelector<HTMLElement>("[data-menu-panel]");
+    const closeLinks = document.querySelectorAll<HTMLAnchorElement>("[data-nav-close]");
+    if (!toggle || !panel) return;
+
+    const setOpen = (open: boolean) => {
+      toggle.setAttribute("aria-expanded", String(open));
+      toggle.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
+      panel.hidden = !open;
+    };
+
+    toggle.addEventListener("click", () => {
+      const isOpen = toggle.getAttribute("aria-expanded") === "true";
+      setOpen(!isOpen);
+    });
+
+    closeLinks.forEach((link) => {
+      link.addEventListener("click", () => setOpen(false));
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && toggle.getAttribute("aria-expanded") === "true") {
+        setOpen(false);
+        toggle.focus();
+      }
+    });
+  }
+
+  setupMenu();
+  document.addEventListener("astro:after-swap", setupMenu);
+</script>

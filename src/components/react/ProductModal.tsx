@@ -77,13 +77,15 @@ export default function ProductModal() {
       />
 
       <div
-        className={`absolute inset-x-4 top-1/2 mx-auto max-w-2xl md:inset-x-auto md:left-1/2 md:-translate-x-1/2 md:w-[calc(100%-2rem)]`}
+        className={`absolute inset-0 md:inset-x-4 md:inset-y-8 top-0 md:top-1/2 mx-auto md:max-w-2xl md:left-1/2 md:-translate-x-1/2 md:w-[calc(100%-2rem)] ${
+          closing ? "md:-translate-y-1/2" : "md:-translate-y-1/2"
+        }`}
       >
         <div
-          className={`relative overflow-hidden rounded-3xl bg-celestial-surface shadow-celestial-lg max-h-[90vh] overflow-y-auto overscroll-contain transform-gpu will-change-transform ${
+          className={`relative overflow-hidden rounded-none md:rounded-3xl bg-celestial-surface shadow-celestial-lg h-full md:h-auto max-h-screen md:max-h-[90vh] overflow-y-auto overscroll-contain transform-gpu will-change-transform ${
             closing
-              ? "opacity-0 scale-95 translate-y-2"
-              : "opacity-100 scale-100 translate-y-[-50%] md:translate-y-[-50%]"
+              ? "opacity-0 scale-95 translate-y-2 md:translate-y-[-40%]"
+              : "opacity-100 scale-100 translate-y-0 md:translate-y-[-50%]"
           } transition-all duration-200 ease-out`}
         >
           <button
@@ -107,18 +109,18 @@ export default function ProductModal() {
               />
             </div>
 
-            <div className="flex flex-col gap-4 p-6 md:p-8">
+            <div className="flex flex-col gap-4 p-5 sm:p-6 md:p-8">
               <div>
                 <p className="text-xs uppercase tracking-wider text-celestial-muted">
                   {product.categoria}
                 </p>
                 <h2
                   id="product-title"
-                  className="mt-1 font-display text-2xl text-celestial-ink text-balance"
+                  className="mt-1 font-display text-xl sm:text-2xl text-celestial-ink text-balance"
                 >
                   {product.nombre}
                 </h2>
-                <p className="mt-3 font-display text-3xl text-celestial-sky-700 tabular-nums">
+                <p className="mt-3 font-display text-2xl sm:text-3xl text-celestial-sky-700 tabular-nums">
                   {formatPrice(product.precio)}
                 </p>
               </div>
@@ -127,7 +129,7 @@ export default function ProductModal() {
                 {product.descripcion}
               </p>
 
-              <div className="mt-2 flex items-center gap-4">
+              <div className="mt-2 flex items-center gap-3 sm:gap-4 flex-wrap">
                 <span className="text-sm text-celestial-ink">Cantidad</span>
                 <div
                   className="inline-flex items-center gap-1 rounded-full border border-celestial-border"

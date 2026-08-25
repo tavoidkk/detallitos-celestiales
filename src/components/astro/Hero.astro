@@ -10,19 +10,19 @@ const whatsappUrl = buildWhatsAppUrl(buildCustomOrderMessage("Emaús, Samuel o S
 <section class="relative overflow-hidden">
   <div
     aria-hidden="true"
-    class="absolute inset-0 -z-10 bg-linear-to-b from-celestial-sky-300/40 via-celestial-bg/85 to-celestial-bg"
+    class="absolute inset-0 -z-10 bg-gradient-to-b from-celestial-sky-300/40 via-celestial-bg/85 to-celestial-bg"
   >
   </div>
 
   <div
     aria-hidden="true"
-    class="absolute inset-0 -z-10 opacity-25 bg-cover bg-center"
+    class="absolute inset-0 -z-10 opacity-20 sm:opacity-25 bg-cover bg-center"
     style={`background-image: url('${heroBg}');`}
   >
   </div>
 
   <div
-    class="mx-auto max-w-6xl px-4 md:px-6 pt-16 pb-20 md:pt-24 md:pb-28 grid gap-10 md:grid-cols-12 items-center"
+    class="mx-auto max-w-6xl px-4 sm:px-6 pt-10 pb-16 sm:pt-16 sm:pb-20 md:pt-24 md:pb-28 grid gap-10 md:grid-cols-12 items-center"
   >
     <div class="md:col-span-7 reveal">
       <p
@@ -32,23 +32,19 @@ const whatsappUrl = buildWhatsAppUrl(buildCustomOrderMessage("Emaús, Samuel o S
         Detalles religiosos con sentido
       </p>
 
-      <h1
-        class="mt-5 font-display text-celestial-ink text-balance"
-      >
+      <h1 class="mt-4 sm:mt-5 font-display text-celestial-ink text-balance">
         Regalos con{" "}
         <span class="text-celestial-sky-700 italic">Amor</span>
         <span class="block text-celestial-gold-700">para retiros espirituales.</span>
       </h1>
 
-      <p
-        class="mt-6 max-w-xl text-lg text-celestial-muted text-pretty"
-      >
+      <p class="mt-5 sm:mt-6 max-w-xl text-base sm:text-lg text-celestial-muted text-pretty">
         Acompañamos tus retiros Emaús, Samuel y Semillitas con
         pulseras, cruces, collares y jesucitos pensados para
         cada momento de oración y encuentro.
       </p>
 
-      <div class="mt-8 flex flex-col sm:flex-row gap-3">
+      <div class="mt-7 sm:mt-8 flex flex-col sm:flex-row gap-3">
         <a
           href="/catalogo"
           class="inline-flex items-center justify-center gap-2 rounded-full bg-celestial-sky-600 px-6 py-3 text-base font-medium text-white shadow-celestial-sm hover:bg-celestial-sky-700 transition-colors duration-150 tap-safe"
@@ -69,15 +65,15 @@ const whatsappUrl = buildWhatsAppUrl(buildCustomOrderMessage("Emaús, Samuel o S
     </div>
 
     <div class="md:col-span-5 reveal">
-      <div class="relative mx-auto max-w-md">
+      <div class="relative mx-auto max-w-sm sm:max-w-md">
         <div
           aria-hidden="true"
-          class="absolute -inset-6 -z-10 rounded-[2.5rem] bg-linear-to-br from-celestial-sky-300/40 via-transparent to-celestial-gold-300/40 blur-2xl"
+          class="absolute -inset-6 -z-10 rounded-[2.5rem] bg-gradient-to-br from-celestial-sky-300/40 via-transparent to-celestial-gold-300/40 blur-2xl"
         >
         </div>
 
         <div
-          class="relative aspect-square rounded-4xl border border-celestial-border bg-celestial-surface p-8 shadow-celestial-lg grid place-items-center"
+          class="relative aspect-square rounded-[2rem] border border-celestial-border bg-celestial-surface p-6 sm:p-8 shadow-celestial-lg grid place-items-center"
         >
           <svg
             viewBox="0 0 200 200"
@@ -138,7 +134,7 @@ const whatsappUrl = buildWhatsAppUrl(buildCustomOrderMessage("Emaús, Samuel o S
         </div>
 
         <p
-          class="mt-4 text-center text-xs uppercase tracking-[0.2em] text-shadow-white text-celestial-gold-700"
+          class="mt-3 sm:mt-4 text-center text-xs uppercase tracking-[0.2em] text-celestial-muted"
         >
           Hecho con fe y detalle
         </p>
@@ -148,7 +144,6 @@ const whatsappUrl = buildWhatsAppUrl(buildCustomOrderMessage("Emaús, Samuel o S
 </section>
 
 <script>
-  // Reveal-on-scroll for elements marked .reveal
   function setupReveal() {
     if (!("IntersectionObserver" in window)) {
       document

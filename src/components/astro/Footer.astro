@@ -4,10 +4,10 @@ import { Instagram, Facebook, Music2, MessageCircle } from "lucide-astro";
 ---
 
 <footer
-  class="mt-24 border-t border-celestial-border bg-celestial-surface"
+  class="mt-20 sm:mt-24 border-t border-celestial-border bg-celestial-surface"
 >
   <div
-    class="mx-auto max-w-6xl px-4 md:px-6 py-12 grid gap-10 md:grid-cols-3"
+    class="mx-auto max-w-6xl px-4 sm:px-6 py-10 sm:py-12 grid gap-8 sm:gap-10 sm:grid-cols-2 md:grid-cols-3"
   >
     <div>
       <img
@@ -16,7 +16,7 @@ import { Instagram, Facebook, Music2, MessageCircle } from "lucide-astro";
         width="240"
         height="60"
         loading="lazy"
-        class="h-16 w-auto"
+        class="h-14 w-auto sm:h-16"
       />
       <p class="mt-4 text-sm text-celestial-muted text-pretty">
         {SITE.description}
@@ -89,7 +89,7 @@ import { Instagram, Facebook, Music2, MessageCircle } from "lucide-astro";
 
   <div class="border-t border-celestial-border">
     <p
-      class="mx-auto max-w-6xl px-4 md:px-6 py-6 text-xs text-celestial-muted text-center"
+      class="mx-auto max-w-6xl px-4 sm:px-6 py-6 text-xs text-celestial-muted text-center"
     >
       © <span data-current-year>{new Date().getFullYear()}</span>
       {" "}{SITE.name}. Todos los derechos reservados.

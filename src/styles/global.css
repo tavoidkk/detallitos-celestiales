@@ -34,6 +34,7 @@
     color-scheme: light;
     scroll-behavior: smooth;
     -webkit-tap-highlight-color: transparent;
+    overflow-x: hidden;
   }
 
   body {
@@ -43,6 +44,8 @@
     font-feature-settings: "ss01", "cv11";
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+    min-height: 100dvh;
   }
 
   h1, h2, h3, h4 {
@@ -52,9 +55,9 @@
     text-wrap: balance;
   }
 
-  h1 { font-size: clamp(2.25rem, 4.5vw + 1rem, 4.5rem); line-height: 1.05; }
-  h2 { font-size: clamp(1.875rem, 2.5vw + 1rem, 3rem); line-height: 1.1; }
-  h3 { font-size: clamp(1.375rem, 1.5vw + 0.75rem, 2rem); line-height: 1.2; }
+  h1 { font-size: clamp(2rem, 4vw + 1rem, 4.5rem); line-height: 1.05; }
+  h2 { font-size: clamp(1.625rem, 2.2vw + 1rem, 3rem); line-height: 1.1; }
+  h3 { font-size: clamp(1.25rem, 1.2vw + 0.75rem, 2rem); line-height: 1.2; }
 
   p { text-wrap: pretty; }
 

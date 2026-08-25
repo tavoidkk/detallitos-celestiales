@@ -64,9 +64,9 @@ export default function SearchBar() {
   };
 
   return (
-    <div ref={wrapRef} className="relative">
+    <div ref={wrapRef} className="relative w-full sm:w-auto">
       <div className="flex items-center gap-2 rounded-full border border-celestial-border bg-celestial-surface px-3 py-2 focus-within:border-celestial-sky-500 transition-colors duration-150">
-        <Search size={16} aria-hidden="true" className="text-celestial-muted" />
+        <Search size={16} aria-hidden="true" className="text-celestial-muted shrink-0" />
         <input
           ref={inputRef}
           type="search"
@@ -82,7 +82,7 @@ export default function SearchBar() {
           }}
           onFocus={() => setOpen(true)}
           onKeyDown={onKeyDown}
-          className="w-32 md:w-56 bg-transparent text-sm text-celestial-ink placeholder:text-celestial-muted focus:outline-none"
+          className="w-full sm:w-40 lg:w-56 bg-transparent text-sm text-celestial-ink placeholder:text-celestial-muted focus:outline-none min-w-0"
         />
         {query.length > 0 && (
           <button
@@ -92,7 +92,7 @@ export default function SearchBar() {
               inputRef.current?.focus();
             }}
             aria-label="Limpiar búsqueda"
-            className="text-celestial-muted hover:text-celestial-ink tap-safe"
+            className="text-celestial-muted hover:text-celestial-ink tap-safe shrink-0"
           >
             <X size={14} aria-hidden="true" />
           </button>
@@ -103,7 +103,7 @@ export default function SearchBar() {
         <div
           role="listbox"
           aria-label="Resultados de búsqueda"
-          className="absolute right-0 top-full mt-2 w-72 md:w-80 max-h-80 overflow-y-auto overscroll-contain rounded-2xl border border-celestial-border bg-celestial-surface shadow-celestial-md z-50"
+          className="fixed sm:absolute left-4 right-4 sm:left-auto sm:right-0 top-16 sm:top-full mt-0 sm:mt-2 sm:w-72 lg:w-80 max-h-80 overflow-y-auto overscroll-contain rounded-2xl border border-celestial-border bg-celestial-surface shadow-celestial-md z-50"
         >
           {results.length === 0 ? (
             <p className="px-4 py-6 text-center text-sm text-celestial-muted">

@@ -6,7 +6,7 @@ import ProductCard from "./ProductCard.astro";
 const productos = getFeaturedProducts();
 ---
 
-<section id="destacados" class="mx-auto max-w-6xl px-4 md:px-6 py-16 md:py-24">
+<section id="destacados" class="mx-auto max-w-6xl px-4 sm:px-6 py-14 sm:py-16 md:py-24">
   <div class="flex items-end justify-between gap-4 flex-wrap">
     <div class="max-w-xl">
       <p class="text-xs uppercase tracking-[0.18em] text-celestial-sky-700">
@@ -15,7 +15,7 @@ const productos = getFeaturedProducts();
       <h2 class="mt-3 accent-rule text-celestial-ink">
         Productos destacados
       </h2>
-      <p class="mt-6 text-celestial-muted text-pretty">
+      <p class="mt-5 sm:mt-6 text-celestial-muted text-pretty">
         Los detalles que más eligen los equipos de retiros
         para cerrar cada jornada con un recuerdo significativo.
       </p>
@@ -30,7 +30,7 @@ const productos = getFeaturedProducts();
   </div>
 
   <div
-    class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4 reveal"
+    class="mt-8 sm:mt-10 grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5 reveal"
   >
     {productos.map((product, i) => (
       <ProductCard product={product} priority={i < 2} />
